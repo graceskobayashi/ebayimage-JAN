@@ -17,12 +17,13 @@
 ## インストール手順
 
 以下のライブラリをインストールする必要があります。ターミナルまたはコマンドプロンプトを開き、以下のコマンドを実行してください。
-
 ```bash
 pip install requests beautifulsoup4 google-api-python-client google-auth-httplib2 google-auth-oauthlib selenium webdriver-manager configparser
+```
 設定ファイル (config.ini) の作成
 このツールを正しく動作させるためには、config.ini という設定ファイルが必要です。以下の内容を参考に、config.ini ファイルを作成してください。
 
+```
 [DEFAULT]
 CREDENTIALS_FILE = path/to/your/service_account_key.json  # サービスアカウントキーファイルのパス
 SPREADSHEET_ID = your_spreadsheet_id                    # GoogleスプレッドシートのID
@@ -35,7 +36,7 @@ ASIN_COLUMN = D                                       # ASINを書き込む列
 AMAZON_URL_COLUMN = E                                 # amazonのURLを書き込む列
 ERESA_USERNAME = your_eresa_username                   # ERESAのログインユーザー名
 ERESA_PASSWORD = your_eresa_password                    # ERESAのログインパスワード
-
+```
 ### 各設定項目の説明:
 
 -   `CREDENTIALS_FILE`: Google Cloud Platformで作成したサービスアカウントキーファイルのパスを指定します。
