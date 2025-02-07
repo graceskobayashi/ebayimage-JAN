@@ -2,7 +2,7 @@
 
 ## 概要
 
-このツールは、eBayの商品ページの画像URLを基に、Amazonの商品ページを特定し、さらにERESA（イーリサ）というサイトからJANコードを取得するまでの一連の手順を自動化します。手作業によるJANコードの収集を効率化できます。
+このツールは、eBayの商品ページの画像URLを基に、Amazonの商品ページを特定し、拡張機能によってAmazonの商品ページに表示されたERESA（イーリサ）の情報からJANコードを取得するまでの一連の手順を自動化します。手作業によるJANコードの収集を効率化できます。
 
 ## 必要な環境
 
@@ -25,17 +25,19 @@ pip install requests beautifulsoup4 google-api-python-client google-auth-httplib
 
 ```
 [DEFAULT]
-CREDENTIALS_FILE = path/to/your/service_account_key.json  # サービスアカウントキーファイルのパス
-SPREADSHEET_ID = your_spreadsheet_id                    # GoogleスプレッドシートのID
-SHEET_NAME = your_sheet_name                             # スプレッドシートのシート名
-EBAY_LINK_COLUMN = A                                   # eBayのURLが記載された列
-JAN_CODE_COLUMN = B                                    # JANコードを書き込む列
-START_ROW = 2                                           # 処理を開始する行
-IMAGE_URL_COLUMN = C                                 # 画像URLを書き込む列
-ASIN_COLUMN = D                                       # ASINを書き込む列
-AMAZON_URL_COLUMN = E                                 # amazonのURLを書き込む列
-ERESA_USERNAME = your_eresa_username                   # ERESAのログインユーザー名
-ERESA_PASSWORD = your_eresa_password                    # ERESAのログインパスワード
+CREDENTIALS_FILE = C:\Users\                                                        # サービスアカウントキーファイルのパス
+SPREADSHEET_ID = xxxxxxxxxxxxxxxxxxxxx                                              # GoogleスプレッドシートのID
+SHEET_NAME = SHEET NAME                                                             # スプレッドシートのシート名
+EBAY_LINK_COLUMN = C                                                                # eBayのURLが記載された列
+JAN_CODE_COLUMN = D                                                                 # JANコードを書き込む列
+IMAGE_URL_COLUMN = E                                                                # 画像URLを書き込む列
+ASIN_COLUMN = F                                                                     # ASINを書き込む列
+AMAZON_URL_COLUMN = G                                                               # amazonのURLを書き込む列
+START_ROW = 2                                                                       # 処理を開始する行
+END_ROW = 10                                                                        # 処理を修了する行
+CRX_PATH = C:\Users\                                                                #crxファイルのパス
+ERESA_USERNAME = USERNAME                                                           # ERESAのログインユーザー名
+ERESA_PASSWORD = PASSWORD                                                           # ERESAのログインパスワード
 ```
 ### 各設定項目の説明:
 
@@ -48,6 +50,9 @@ ERESA_PASSWORD = your_eresa_password                    # ERESAのログイン�
 -   `IMAGE_URL_COLUMN`: eBayの画像URLを書き込む列のアルファベットを指定します。
 -   `ASIN_COLUMN`: AmazonのASINを書き込む列のアルファベットを指定します。
 -   `AMAZON_URL_COLUMN`: AmazonのURLを書き込む列のアルファベットを指定します。
+-   `START_ROW`: 動作を開始する行を指定します。
+-   `END_ROW`: 動作を終了する行を指定します。
+-   `CRX_PATH`: CRXファイルのパスを指定します。
 -   `ERESA_USERNAME`: ERESAにログインするためのユーザー名を指定します。
 -   `ERESA_PASSWORD`: ERESAにログインするためのパスワードを指定します。
 
@@ -90,7 +95,7 @@ Seleniumを使ってブラウザを操作するために、ChromeDriverが必要
     -   **Amazon商品URLの検索**: Google画像検索を使用して、eBay画像のAmazon商品URLを検索します。
     -   **Amazon ASINの抽出**: 取得したAmazonの商品URLからASINを抽出します。
     -   **ERESAへのログイン**: `config.ini` に ERESA のユーザー名とパスワードが設定されている場合、ERESAにログインします。
-    -   **JANコードの抽出**: ERESAの商品ページからJANコードを抽出します。
+    -   **JANコードの抽出**: Amazonの商品ページに埋め込まれたERESAの商品ページからJANコードを抽出します。
     -   **スプレッドシートへの書き込み**: 取得したJANコード、画像URL、ASIN、Amazon URLを指定したスプレッドシートの行に書き込みます。
 -   **処理の終了**: 全てのeBay URLの処理が完了したら、プログラムを終了します。
 
