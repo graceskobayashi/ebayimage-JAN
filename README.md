@@ -46,7 +46,6 @@ ERESA_PASSWORD = PASSWORD                                                       
 -   `SHEET_NAME`: 処理対象のスプレッドシート内のシート名を指定します。
 -   `EBAY_LINK_COLUMN`: eBayのURLが記載されている列のアルファベットを指定します。（例: `A`, `B`, `C`）
 -   `JAN_CODE_COLUMN`: 取得したJANコードを書き込む列のアルファベットを指定します。
--   `START_ROW`: スプレッドシートのどの行から処理を開始するかを指定します。
 -   `IMAGE_URL_COLUMN`: eBayの画像URLを書き込む列のアルファベットを指定します。
 -   `ASIN_COLUMN`: AmazonのASINを書き込む列のアルファベットを指定します。
 -   `AMAZON_URL_COLUMN`: AmazonのURLを書き込む列のアルファベットを指定します。
